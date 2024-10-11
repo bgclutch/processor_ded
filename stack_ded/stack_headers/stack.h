@@ -2,7 +2,7 @@
 #define STACK_H_
 
 // FLAGS
-//#define DEBUG
+// #define DEBUG
 
 #ifdef DEBUG
     #define DEBUG_VAR(...) __VA_ARGS__
@@ -56,8 +56,6 @@ enum Error_Codes
     EMPTY_STACK                = 0x20,
     POISON_IN_STACK            = 0x40,
     STACK_NOT_REALLOCED        = 0x96,
-    //ADD SOME ERRORS CODES
-    //realloc error (na podumat')
 };
 
 struct Main_Stack_Struct
