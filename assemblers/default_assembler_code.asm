@@ -1,13 +1,13 @@
 push 27
 push 19
-cos 2
-sin 5
+cos
+sin
 in
 out
-add
+
 mul
 out
-sqrt 9
-hlt
+jmp
+ja
+jae
 sub
-dump

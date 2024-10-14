@@ -15,7 +15,7 @@
 #endif
 
 static const size_t Struct_Ctor_Size =  8;
-static const Poison_Byte  = 123456781;
+static const StackElem_t Poison_Byte  = 123456781;
 //static StackElem_t Dead_Byte = '№';
 static_assert(sizeof(StackElem_t) == 8);
 
@@ -153,7 +153,7 @@ Error_Codes stack_pop(Main_Stack_Struct *stack_data, StackElem_t *elem)
     return ALL_IS_OK;
 }
 
-#ifdef DEBUG
+
 void_sex stack_dump(Main_Stack_Struct *stack_data, const char* file_name, const char* func_name, size_t line) //add checks
 {
     RETURN_ERROR(stack_is_err(stack_data));
@@ -222,7 +222,7 @@ void_sex stack_dump(Main_Stack_Struct *stack_data, const char* file_name, const 
 
     RETURN_ERROR(stack_is_err(stack_data));
 }
-#endif
+
 
 #ifdef DEBUG
 size_t stack_is_err(Main_Stack_Struct *stack_data)

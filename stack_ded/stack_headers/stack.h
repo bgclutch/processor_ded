@@ -8,7 +8,6 @@
     #define DEBUG_VAR(...) __VA_ARGS__
     #define ASSERT(...) assert(__VA_ARGS__)
     #define RETURN_ERROR(error_sum) return_error(error_sum, __FILE__, __func__, __LINE__)
-    #define STACK_DUMP(stack_data)  stack_dump( stack_data, __FILE__, __func__, __LINE__)
     #define ASSERT_FUNC(...) assert(__VA_ARGS__)
     #define CANARY_MODE
     #define HASH_MODE
@@ -16,7 +15,6 @@
     #define DEBUG_VAR(...)
     #define ASSERT(...)
     #define RETURN_ERROR(...)
-    #define STACK_DUMP(...)
     #define ASSERT_FUNC(...) __VA_ARGS__
 #endif
 
@@ -34,6 +32,8 @@
     #define HASH(...)
 #endif
 
+#define STACK_DUMP(stack_data)  stack_dump( stack_data, __FILE__, __func__, __LINE__)
+
 
 
 #include <stdio.h>
@@ -41,7 +41,7 @@
 #include <stdint.h>
 
 typedef void void_sex;
-typedef size_t StackElem_t;
+typedef ssize_t StackElem_t;
 
 
 enum Error_Codes
@@ -56,6 +56,8 @@ enum Error_Codes
     EMPTY_STACK                = 0x20,
     POISON_IN_STACK            = 0x40,
     STACK_NOT_REALLOCED        = 0x96,
+    //ADD SOME ERRORS CODES
+    //realloc error (na podumat')
 };
 
 struct Main_Stack_Struct
@@ -67,10 +69,7 @@ struct Main_Stack_Struct
     StackElem_t* stack_array;
     size_t              size;
     size_t          capacity;
-
-    #ifdef DEBUG
     FILE*          dump_file;
-    #endif
     #ifdef HASH_MODE
     uint64_t     hash_struct;
     #endif
