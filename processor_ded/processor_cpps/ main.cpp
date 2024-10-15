@@ -135,38 +135,80 @@ int main(int argc, char* argv)
             }
             case(JMP):
             {
+                SPU.ip = SPU.execode[SPU.ip + 1];
                 break;
-                SPU.ip =;
             }
             case(JA):
             {
+                StackElem_t elem_1 = 0;
+                StackElem_t elem_2 = 0;
+                Error_Codes stk_pop_elm_2_err = stack_pop(&SPU.stack, &elem_2);
+                Error_Codes stk_pop_elm_1_err = stack_pop(&SPU.stack, &elem_1);
+                if(elem_1 > elem_2)
+                    SPU.ip = SPU.execode[SPU.ip + 1];
+                else
+                    SPU.ip++;
                 break;
-                SPU.ip =;
             }
             case(JAE):
             {
+                StackElem_t elem_1 = 0;
+                StackElem_t elem_2 = 0;
+                Error_Codes stk_pop_elm_2_err = stack_pop(&SPU.stack, &elem_2);
+                Error_Codes stk_pop_elm_1_err = stack_pop(&SPU.stack, &elem_1);
+                if(elem_1 >= elem_2)
+                    SPU.ip = SPU.execode[SPU.ip + 1];
+                else
+                    SPU.ip++;
                 break;
-                SPU.ip =;
             }
             case(JB):
             {
+                StackElem_t elem_1 = 0;
+                StackElem_t elem_2 = 0;
+                Error_Codes stk_pop_elm_2_err = stack_pop(&SPU.stack, &elem_2);
+                Error_Codes stk_pop_elm_1_err = stack_pop(&SPU.stack, &elem_1);
+                if(elem_1 < elem_2)
+                    SPU.ip = SPU.execode[SPU.ip + 1];
+                else
+                    SPU.ip++;
                 break;
-                SPU.ip =;
             }
             case(JBE):
             {
+                StackElem_t elem_1 = 0;
+                StackElem_t elem_2 = 0;
+                Error_Codes stk_pop_elm_2_err = stack_pop(&SPU.stack, &elem_2);
+                Error_Codes stk_pop_elm_1_err = stack_pop(&SPU.stack, &elem_1);
+                if(elem_1 <= elem_2)
+                    SPU.ip = SPU.execode[SPU.ip + 1];
+                else
+                    SPU.ip++;
                 break;
-                SPU.ip =;
             }
             case(JE):
             {
+                StackElem_t elem_1 = 0;
+                StackElem_t elem_2 = 0;
+                Error_Codes stk_pop_elm_2_err = stack_pop(&SPU.stack, &elem_2);
+                Error_Codes stk_pop_elm_1_err = stack_pop(&SPU.stack, &elem_1);
+                if(elem_1 == elem_2)
+                    SPU.ip = SPU.execode[SPU.ip + 1];
+                else
+                    SPU.ip++;
                 break;
-                SPU.ip =;
             }
             case(JNE):
             {
+                StackElem_t elem_1 = 0;
+                StackElem_t elem_2 = 0;
+                Error_Codes stk_pop_elm_2_err = stack_pop(&SPU.stack, &elem_2);
+                Error_Codes stk_pop_elm_1_err = stack_pop(&SPU.stack, &elem_1);
+                if(elem_1 != elem_2)
+                    SPU.ip = SPU.execode[SPU.ip + 1];
+                else
+                    SPU.ip++;
                 break;
-                SPU.ip =;
             }
             case(PSHR):
             {
@@ -191,7 +233,7 @@ int main(int argc, char* argv)
             }
             default:
             {
-                assert(0 && "proizoshla zalupa, srochno fixit'");
+                assert(0 && "proizoshla zalupa, srochno fixit' + vova pidor");
             };
         }
     }
