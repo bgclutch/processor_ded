@@ -1,10 +1,10 @@
 #ifndef STACK_H_
 #define STACK_H_
 
-// FLAGS
-// #define DEBUG
+// FLAGS //
+#define NOT_DEBUG
 
-#ifdef DEBUG
+#ifndef NOT_DEBUG
     #define DEBUG_VAR(...) __VA_ARGS__
     #define ASSERT(...) assert(__VA_ARGS__)
     #define RETURN_ERROR(error_sum) return_error(error_sum, __FILE__, __func__, __LINE__)
@@ -65,7 +65,6 @@ struct Main_Stack_Struct
     #ifdef CANARY_MODE
     uint64_t  left_st_canary;
     #endif
-
     StackElem_t* stack_array;
     size_t              size;
     size_t          capacity;
